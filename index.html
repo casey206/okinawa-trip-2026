@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>沖繩取材行程 11/4–11/7</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column like a printed trip sheet; each day is a timeline of stops with a rain-plan panel. */
+:root{
+  --bg:#f6f7f8; --paper:#ffffff; --ink:#18212b; --muted:#5d6874; --line:#d9dee3;
+  --indigo:#1f3f6e; --tile:#b8442f; --sea:#1d7a78; --warn:#9a5b00; --warnbg:#fff4e0;
+  --tilebg:#fbece8; --seabg:#e5f3f2; --indbg:#e8eef7;
+  --display:"Noto Serif TC","Songti TC",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161c; --paper:#171e26; --ink:#e7ecf1; --muted:#9aa6b2; --line:#2c3642;
+  --indigo:#8fb2e6; --tile:#f08a73; --sea:#5cc4c0; --warn:#f2b45a; --warnbg:#2e2412;
+  --tilebg:#33201b; --seabg:#15302f; --indbg:#1a2738; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161c; --paper:#171e26; --ink:#e7ecf1; --muted:#9aa6b2; --line:#2c3642;
+  --indigo:#8fb2e6; --tile:#f08a73; --sea:#5cc4c0; --warn:#f2b45a; --warnbg:#2e2412;
+  --tilebg:#33201b; --seabg:#15302f; --indbg:#1a2738; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.7}
+.wrap{max-width:920px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--indigo)}
+h2{font-size:24px;font-weight:900;color:var(--indigo)}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+a{color:var(--sea)}
+a:focus-visible{outline:2px solid var(--tile);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+header{display:flex;flex-direction:column;gap:8px;border-bottom:3px solid var(--indigo);padding-bottom:18px}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.grid2>*{min-width:0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.kv dt{color:var(--muted);font-size:13px}
+.kv dd{margin:0;min-width:0}
+.flight{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.flight .no{font-family:var(--mono);font-weight:600;color:var(--tile)}
+.verdict{border-left:4px solid var(--sea);background:var(--seabg);padding:14px 16px;border-radius:0 6px 6px 0}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+ol{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:8px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:1px 7px;border-radius:3px;margin-left:4px;vertical-align:2px;white-space:nowrap}
+.t-must{background:var(--tilebg);color:var(--tile)}
+.t-opt{background:var(--indbg);color:var(--indigo)}
+.t-res{background:var(--seabg);color:var(--sea)}
+.t-warn{background:var(--warnbg);color:var(--warn)}
+.day{display:flex;flex-direction:column;gap:14px}
+.dayhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:8px}
+.dayhead .d{font-family:var(--mono);font-size:13px;color:var(--paper);background:var(--indigo);padding:2px 8px;border-radius:3px}
+.route{font-size:13.5px;color:var(--muted)}
+.tl{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.stop{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:12px 16px;border-top:1px solid var(--line)}
+.stop:first-child{border-top:0}
+.stop .time{font-family:var(--mono);font-size:13.5px;font-weight:600;color:var(--indigo);padding-top:2px}
+.stop .body{min-width:0;display:flex;flex-direction:column;gap:3px}
+.stop .name{font-weight:700}
+.stop .meta{font-size:13px;color:var(--muted)}
+.stop .meta b{color:var(--ink);font-weight:500}
+.stop.move{background:var(--bg)}
+.stop.move .name{font-weight:500;color:var(--muted)}
+.rain{border:1px dashed var(--sea);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.rain h3{color:var(--sea);font-family:var(--body);font-size:14.5px;font-weight:700}
+.todo li{padding-left:2px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+th,td{text-align:left;padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{font-weight:700;color:var(--muted);font-size:12.5px;border-top:0;background:var(--bg)}
+.foot{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:560px){.stop{grid-template-columns:1fr;gap:4px}.sheet{padding:16px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">沖繩觀光推廣取材 · 實際執行版</span>
+  <h1>沖繩取材行程 11/4（三）– 11/7（六）</h1>
+  <p class="muted">2 名（企劃 1、攝影 1）· 租車自駕 · 名護 1 晚＋那霸 2 晚 · 資料查證日 2026/11/1</p>
+</header>
+
+<!-- 基本資訊 -->
+<section class="grid2">
+  <div class="sheet">
+    <span class="eyebrow">航班 · JTA（JAL 開票）</span>
+    <div class="flight"><span class="no">NU0302</span><span class="mono">11/4（三）10:15 桃園 T2 → 12:50 那霸 國際線</span></div>
+    <div class="flight"><span class="no">NU0307</span><span class="mono">11/7（六）17:55 那霸 國際線 → 18:40 桃園 T2</span></div>
+    <p class="small muted">托運 2 件 · 票種改票需手續費。</p>
+  </div>
+  <div class="sheet">
+    <span class="eyebrow">住宿（客戶指定、已付款）</span>
+    <dl class="kv">
+      <dt>11/4</dt><dd><b>HOTEL KINJO 名護ぐすく 75</b><br><span class="small">〒905-0013 沖縄県名護市城1-2-10 · 0980-43-0880 · IN 15:00–0:00／OUT 10:00</span></dd>
+      <dt>11/5–7</dt><dd><b>西鉄リゾートイン那覇</b><br><span class="small">〒900-0033 沖縄県那覇市久米2-3-13 · 098-869-5454 · OUT 11:00</span></dd>
+    </dl>
+    
+  </div>
+</section>
+
+<section class="sheet">
+  <span class="eyebrow">停車</span>
+  <div class="grid2">
+    <div>
+      <h3>名護：飯店沒有停車場</h3>
+      <p class="small">官網 FAQ 寫明無停車場，要停附近的投幣式停車場（例：Dパーキング名護市城1丁目第3、アップルパーク名護市城2丁目第1、名護市營停車場）。有住客評論說隔壁停車場停到 24 點 500 日圓、跨日再加 500 日圓，<b>未經官方確認</b>，抵達時看現場告示牌。</p>
+    </div>
+    <div>
+      <h3>那霸：飯店有停車場，先到先停</h3>
+      <p class="small">1 晚 1,500 日圓（2026/4 起的價格）· 40 台 · <b>不能預約</b> · 入住日 14:00 到隔天 12:00，超出時間每 30 分 100 日圓 · 24 小時可進出。<b>車高限 1.8m、車寬 1.9m、車長 5.0m</b>，租車請選一般轎車或小休旅，不要選大型廂型車。晚上回來若停滿，附近投幣停車場平日最高約 1,300 日圓。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 可行性 -->
+<section class="day">
+  <h2>可行性評估</h2>
+  <div class="verdict">
+    <p><b>可以執行，但原企畫書的天數順序要重排。</b>企畫書是照「9/9–9/12、那霸 2 晚＋恩納 1 晚」設計的，實際是「首日下午才落地 → 名護 1 晚 → 那霸 2 晚 → 末日傍晚起飛」，扣掉第一天和最後一天的交通，可用拍攝時間大約 2.5 天。下面的行程把北部放在前兩天、那霸和中部放在第三天、南部放在最後一天上午，沿路往機場收尾，不走回頭路。企畫書約 50 個候補點，實際排得進去的約 30 個，其餘列在最後的對照表。</p>
+  </div>
+  <div class="sheet">
+    <h3>和原企畫書不同、需要知道的地方</h3>
+    <ul class="small">
+      <li><b>恩納村海景飯店那晚沒有了</b>（改住名護市區商務飯店），企畫書 Day 2「恩納村海濱度假」整段拍不到。建議改用讀谷ニライビーチ的夕陽補足海景素材；預算表裡的恩納住宿也要更新。</li>
+      <li><b>首里城正殿 11/23 才開放內部</b>，這次只能拍外觀，維持企畫書寫的「復元中・倒數」切角。11/22 全園休園。</li>
+      <li><b>きしもと食堂本店週三公休</b>，所以排在 11/5（四）。<b>ippe coppe 週二到週四公休</b>，所以港川排在 11/6（五）。</li>
+      <li><b>タコス メキシコ已在 2025/12/31 結束宜野灣伊佐店，搬到北谷</b>。TACOSPOON 在那霸曙，不在宜野灣。nan*ne 在那霸壺屋，不在讀谷。COFFEE potohoto 在榮町市場，不在壺屋通。</li>
+      <li><b>「下門」沖繩麵＝首里的「しむじょう」</b>，在首里城附近，不在國際通，所以和首里排同一天。</li>
+      <li><b>ガジュマルロック（古宇利島）最後點餐約 15:00</b>，第一天到不了，也不能拍夕陽，這次放棄。</li>
+      <li>查不到的點：<b>okinawa blue col.、.uki、Hisao Museum</b>，請向寫企畫書的人確認正確店名或 IG。</li>
+      <li>11 月東北季風開始，氣溫約 20–25°C，比 9 月涼快、颱風風險低，但陰天比例高。日落約 17:44–17:46。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 出發前待辦 -->
+<section class="day">
+  <h2>出發前待辦（11/2–11/3 要完成）</h2>
+  <div class="sheet todo">
+    <ol class="small">
+      <li><b>租車還沒訂，最優先。</b>選那霸機場取車、11/4 13:30 取 → 11/7 15:00 還；全險加 NOC 保障、附 ETC 卡；車高 1.8m 以下。駕駛要帶<b>台灣駕照正本＋監理站開的日文譯本＋護照</b>。</li>
+      <li><b>商業拍攝許可，馬上打電話。</b>企畫書最後一頁有請觀光局開「取材依頼函」，請一併催：
+        <ul>
+          <li>首里城公園 企畫課 098-886-2279：規定拍攝日 10 天前申請，期限已過；媒體取材要先電話談內容與時間。園區全面禁止空拍機。</li>
+          <li>沖縄県立博物館・美術館 公關 098-941-8200：建築外觀、館內、展覽都要事先許可，原則 2 週前申請，已不足 2 週。</li>
+          <li>浜辺の茶屋：商業拍攝要交「ロケ撮影利用申請書」（官網／沖縄フィルムオフィス有表格）。</li>
+          <li>ガンガラーの谷 098-948-4192：谷內影像未經許可不可商用。</li>
+          <li>座喜味城跡／ユンタンザミュージアム 098-958-3141：規定未查到，先問。</li>
+          <li>各店家：都沒有公開拍攝規定，建議到店先打招呼，或用觀光局名義事先聯絡。</li>
+        </ul>
+      </li>
+      <li><b>訂位</b>：碧〜ao〜 恩納村 11/4 19:00（098-967-7020，9 個車位）· ガンガラーの谷導覽 11/7 9:20 梯次（網路只收到前一天）· YAKINIKU 牛門 11/6 20:00（TableCheck／Hot Pepper）。</li>
+      <li><b>瑞泉酒造</b> 098-884-1968：週末不接電話，平日先確認 11/6 參觀與拍攝（未滿 5 人參觀免預約）。</li>
+      <li><b>向企畫書作者確認</b>：okinawa blue col.、.uki、Hisao Museum 是哪裡。</li>
+      <li><b>出發前 72 小時看天氣</b>，有颱風或暴風警報就啟動延期。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- DAY 1 -->
+<section class="day" id="day1">
+  <div class="dayhead"><span class="d">DAY 1 · 11/4 三</span><h2>落地直奔北部：屋我地・古宇利島夕陽</h2></div>
+  <p class="route">那霸機場 → 沖繩自動車道（那覇IC→許田IC 約 1,000 日圓）→ 屋我地島 → 古宇利島 → 恩納村 → 名護</p>
+  <div class="tl">
+    <div class="stop"><div class="time">12:50</div><div class="body"><span class="name">那霸機場 國際線抵達</span><span class="meta">入境、領行李約 40 分。機場或便利商店簡單吃一點，正餐在 15:45。</span></div></div>
+    <div class="stop"><div class="time">13:40</div><div class="body"><span class="name">租車公司接駁 → 取車</span><span class="meta">接駁＋手續約 40–50 分，順手確認 ETC 卡和導航可輸入電話號碼。</span></div></div>
+    <div class="stop move"><div class="time">14:30</div><div class="body"><span class="name">開往屋我地島，約 1 小時 15 分</span></div></div>
+    <div class="stop"><div class="time">15:45</div><div class="body"><span class="name">くるまえびキッチン TAMAYA <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=くるまえびキッチン+TAMAYA+名護市運天原285" target="_blank" rel="noopener">〒905-1634 名護市運天原285</a> · 0980-52-8080 · 午餐 11:30–最後點餐 18:00 · 不接受午餐預約</span><span class="meta">車蝦養殖場裡的餐廳，當作遲到的午餐兼拍攝。活蝦不足的日子會改冷凍蝦。</span></div></div>
+    <div class="stop"><div class="time">16:40</div><div class="body"><span class="name">古宇利大橋 南詰展望所</span><span class="meta">屋我地側 · 免費約 45 台 · 沒有廁所。拍大橋全景。</span></div></div>
+    <div class="stop"><div class="time">17:00</div><div class="body"><span class="name">古宇利島：ティーヌ浜（心形岩）→ 古宇利ビーチ看夕陽 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=ティーヌ浜+今帰仁村古宇利" target="_blank" rel="noopener">今帰仁村古宇利</a> · 心形岩停車場為民營收費（100–500 日圓）· 古宇利ビーチ 免費約 40 台</span><span class="meta"><b>日落 17:44</b>。夕陽在大橋西側，建議在古宇利ビーチ從島上拍大橋與夕陽。</span></div></div>
+    <div class="stop move"><div class="time">18:10</div><div class="body"><span class="name">開往恩納村名嘉真，約 40 分（估計）</span></div></div>
+    <div class="stop"><div class="time">19:00</div><div class="body"><span class="name">豚匠 碧〜ao〜 恩納村（阿古豬涮涮鍋）<span class="tag t-res">需預約</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=碧ao+恩納村名嘉真2288-259" target="_blank" rel="noopener">恩納村名嘉真2288-259</a> · 098-967-7020 · 17:00–23:00 · 週二公休 · 停車 9 台</span><span class="meta">企畫書寫「與 Ocean BOO! 擇一」，北部這晚吃碧，那霸就不排 Ocean BOO!。</span></div></div>
+    <div class="stop"><div class="time">20:30</div><div class="body"><span class="name">名護 入住 HOTEL KINJO 名護ぐすく 75</span><span class="meta">車程約 20 分。先停附近投幣停車場再入住（入住到 0:00）。</span></div></div>
+  </div>
+  <div class="rain">
+    <h3>雨天備案</h3>
+    <p class="small">TAMAYA 是室內，照常。古宇利島改成車上拍大橋＋島上「古宇利オーシャンタワー」（室內展望台，營業時間未查證），心形岩跳過。晚餐照常。若取車拖到 15:00 以後，直接跳過南詰展望所。</p>
+  </div>
+</section>
+
+<!-- DAY 2 -->
+<section class="day" id="day2">
+  <div class="dayhead"><span class="d">DAY 2 · 11/5 四</span><h2>本部・今歸仁上午，讀谷下午，那霸過夜</h2></div>
+  <p class="route">名護 → 今帰仁城跡 → 備瀬 → 本部渡久地 → 許田IC→石川IC → 讀谷 → 那霸久米</p>
+  <div class="tl">
+    <div class="stop"><div class="time">7:30</div><div class="body"><span class="name">早餐、退房、取車</span><span class="meta">有評論說飯店 1 樓咖啡店有沖繩豬肉蛋飯糰（未確認），不行就便利商店。退房最晚 10:00。</span></div></div>
+    <div class="stop"><div class="time">8:30</div><div class="body"><span class="name">世界遺產 今帰仁城跡 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=今帰仁城跡" target="_blank" rel="noopener">今帰仁村今泊5101</a> · 8:00–18:00（最後入場 17:30）· 全年無休 · 成人 1,000 日圓 · 有停車場</span><span class="meta">早上人少、光線斜，石牆層次好拍。名護過來約 30 分（估計）。</span></div></div>
+    <div class="stop"><div class="time">9:35</div><div class="body"><span class="name">備瀬のフクギ並木 ＋ 備瀬崎 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=備瀬のフクギ並木" target="_blank" rel="noopener">本部町備瀬</a> · 24 小時 · 入口免費停車約 50–60 台；備瀬崎停車 500 日圓</span><span class="meta">租腳踏車：並木レンタサイクル（備瀬411）8:30–日落。水牛車 11:00 起，平日有沒有開未確認。</span></div></div>
+    <div class="stop"><div class="time">10:40</div><div class="body"><span class="name">moco salt coffee <span class="tag t-opt">可捨</span></span><span class="meta">本部町備瀬462 · 10:30–18:00 · 不定休</span></div></div>
+    <div class="stop"><div class="time">11:00</div><div class="body"><span class="name">きしもと食堂 本店 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=きしもと食堂+本部町渡久地5" target="_blank" rel="noopener">〒905-0214 本部町渡久地5</a> · 0980-47-2887 · 11:00–17:00，賣完就關 · <b>週三公休</b> · 免費停車約 11 台（離店稍遠）</span><span class="meta">開門就進，避開排隊。</span></div></div>
+    <div class="stop"><div class="time">11:40</div><div class="body"><span class="name">もとぶ町営市場 <span class="tag t-opt">可捨</span></span><span class="meta">本部町渡久地4（食堂旁步行可到）· 各店時間不同、多不定休</span></div></div>
+    <div class="stop move"><div class="time">12:15</div><div class="body"><span class="name">開往讀谷，約 1 小時（許田IC→石川IC）</span></div></div>
+    <div class="stop"><div class="time">13:15</div><div class="body"><span class="name">パン屋 水円（柴燒麵包）</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=パン屋水円+読谷村座喜味367" target="_blank" rel="noopener">読谷村座喜味367</a> · 098-958-3239 · 週四–日 10:30–17:00 · 有報導說 14 點前後可能賣完，出發前看 IG @suienmoon</span></div></div>
+    <div class="stop"><div class="time">13:45</div><div class="body"><span class="name">やちむんの里 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=やちむんの里+読谷村座喜味2653-1" target="_blank" rel="noopener">〒904-0301 読谷村座喜味2653-1</a> · 北窯共同売店 9:30–17:30（13–14 點午休）· 共同停車場免費</span><span class="meta">各工房能否拍攝要逐家問，登窯旁作業區不能進。</span></div></div>
+    <div class="stop"><div class="time">14:50</div><div class="body"><span class="name">座喜味城跡 ＋ ユンタンザミュージアム</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=座喜味城跡" target="_blank" rel="noopener">読谷村字座喜味708-6</a> · 098-958-3141 · 城跡免費；博物館 9:00–18:00、週三休、500 日圓 · 停車免費（18:00 上鎖）</span></div></div>
+    <div class="stop"><div class="time">15:50</div><div class="body"><span class="name">さんご畑（陸上珊瑚養殖場）<span class="tag t-opt">可捨</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=さんご畑+読谷村高志保923-1" target="_blank" rel="noopener">読谷村高志保923-1（Gala青い海內）</a> · 098-982-9988 · 13:00–18:00（最後入場 17:30）· 週三休 · 成人 900 日圓</span></div></div>
+    <div class="stop"><div class="time">17:15</div><div class="body"><span class="name">ニライビーチ 夕陽 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=ニライビーチ+読谷村儀間600" target="_blank" rel="noopener">〒904-0393 読谷村字儀間600</a> · 免費約 40 台，另有飯店收費停車（每小時 200 日圓）</span><span class="meta"><b>日落 17:45</b>。用來補拍原本恩納村那晚的海景夕陽。</span></div></div>
+    <div class="stop move"><div class="time">18:00</div><div class="body"><span class="name">開回那霸，下班尖峰約 60–80 分</span></div></div>
+    <div class="stop"><div class="time">19:15</div><div class="body"><span class="name">入住 西鉄リゾートイン那覇，停飯店停車場</span><span class="meta">40 台先到先停，滿了就停附近投幣停車場。</span></div></div>
+    <div class="stop"><div class="time">20:00</div><div class="body"><span class="name">ジョージレストラン（美式牛排老店）</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=ジョージレストラン+那覇市辻2-1-9" target="_blank" rel="noopener">〒900-0037 那覇市辻2-1-9</a> · 098-868-5036 · 11:30–22:00 · 週一公休 · 沒有停車場，從飯店步行約 12 分</span></div></div>
+  </div>
+  <div class="rain">
+    <h3>雨天備案</h3>
+    <p class="small">福木林道小雨可以拍（樹蔭能擋雨、氣氛反而好），大雨就縮短，備瀬崎跳過。讀谷改走室內：やちむんの里各工房店內 → ユンタンザミュージアム → 読谷村立図書館（座喜味2901-1，10:00–22:00）→ 読谷ファーマーズマーケット ゆんた市場（喜名2346-11，9:00–18:00）。さんご畑與ニライビーチ取消，提早回那霸。</p>
+  </div>
+</section>
+
+<!-- DAY 3 -->
+<section class="day" id="day3">
+  <div class="dayhead"><span class="d">DAY 3 · 11/6 五</span><h2>首里、港川外人住宅、縣立博物館（週五開到 20:00）</h2></div>
+  <p class="route">久米 → 泊港 → 首里 → 浦添港川 → 宜野灣或北谷 → 新都心 → 牧志</p>
+  <div class="tl">
+    <div class="stop"><div class="time">7:00</div><div class="body"><span class="name">泊いゆまち（泊港魚市場）早餐</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=泊いゆまち+那覇市港町1-1-18" target="_blank" rel="noopener">〒900-0001 那覇市港町1-1-18</a> · 098-868-1096 · 6:00–18:00 · 免費停車約 200 台 · 飯店開車 5 分</span><span class="meta">有店家賣完就收，早到。另一個選擇是 9:00 吃「琉球おばんざい つかや」（松尾2-24-8，週日休）。</span></div></div>
+    <div class="stop"><div class="time">8:30</div><div class="body"><span class="name">首里城公園 <span class="tag t-must">必去</span> <span class="tag t-warn">需申請拍攝</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=首里城公園" target="_blank" rel="noopener">〒903-0815 那覇市首里金城町1-2</a> · 098-886-2020 · 收費區 8:30–19:00，成人 400 日圓（11/23 起漲到 1,000）</span><span class="meta">停首里杜館地下停車場：首小時 500 日圓，之後每 30 分 250 日圓，最高 1,000 日圓，<b>最多停 3 小時</b>（8:30 進場 → 11:30 前要開走）。禁止空拍。</span></div></div>
+    <div class="stop"><div class="time">10:00</div><div class="body"><span class="name">金城町石畳道（步行）</span><span class="meta">從首里城往下走，回程是上坡約 15 分。<b>雨天石灰岩路面很滑。</b></span></div></div>
+    <div class="stop"><div class="time">10:45</div><div class="body"><span class="name">瑞泉酒造 參觀</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=瑞泉酒造+那覇市首里崎山町1-35" target="_blank" rel="noopener">〒903-0814 那覇市首里崎山町1-35</a> · 098-884-1968 · 免費參觀（未滿 5 人免預約）· 停車約 5 台，建議從首里城步行</span></div></div>
+    <div class="stop"><div class="time">11:40</div><div class="body"><span class="name">沖縄そばの店 しむじょう（＝下門）<span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=しむじょう+那覇市首里末吉町2-124-1" target="_blank" rel="noopener">〒903-0801 那覇市首里末吉町2-124-1</a> · 098-884-1933 · 11:00–15:00，賣完就關 · 週二、三休 · 只收現金 · 有停車場</span><span class="meta">登錄有形文化財的古民家，車程約 10 分。</span></div></div>
+    <div class="stop"><div class="time">12:30</div><div class="body"><span class="name">首里染織館 suikara</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=首里染織館suikara" target="_blank" rel="noopener">〒903-0812 那覇市首里当蔵町2-16</a> · 098-917-6030 · 10:30–18:00 · 週二休 · 停車約 6 台</span></div></div>
+    <div class="stop move"><div class="time">13:15</div><div class="body"><span class="name">開往浦添港川，約 30 分</span></div></div>
+    <div class="stop"><div class="time">13:45</div><div class="body"><span class="name">港川外人住宅街 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=港川ステイツサイドタウン" target="_blank" rel="noopener">浦添市港川2丁目</a> · 區內 4 座投幣停車場共約 55 台，各店另有 1–3 個專用位</span>
+      <span class="meta"><b>ippe coppe</b> 港川2-16-1 No.26（週五–一 12:30–17:00，賣完提早關）· <b>oHacorte 港川本店</b> 港川2-17-1 #18（10:30–19:00，水果塔 11:30 起）· <b>PORTRIVER MARKET</b> 港川2-15-8 #30（12:00–18:00，週三、日休）· <b>AMERICAN WAVE</b> 港川2-16-9 No.22（11:00–19:00）</span></div></div>
+    <div class="stop"><div class="time">15:40</div><div class="body"><span class="name">二選一：佐喜眞美術館 或 タコス メキシコ（北谷）<span class="tag t-opt">擇一</span></span><span class="meta">A：<a href="https://www.google.com/maps/search/?api=1&query=佐喜眞美術館" target="_blank" rel="noopener">宜野湾市上原358</a> · 098-893-5737 · 9:30–17:00 · 週二休 · 900 日圓（室內，雨天優先）</span><span class="meta">B：<a href="https://www.google.com/maps/search/?api=1&query=タコス専門店メキシコ+北谷町北谷1-12-10" target="_blank" rel="noopener">北谷町北谷1丁目12-10</a> · 098-979-7778 · 約 11:00–20:00 · 週三休 · 停車 13 台</span></div></div>
+    <div class="stop"><div class="time">17:00</div><div class="body"><span class="name">沖縄県立博物館・美術館 <span class="tag t-must">必去</span> <span class="tag t-warn">需申請拍攝</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=沖縄県立博物館・美術館" target="_blank" rel="noopener">〒900-0006 那覇市おもろまち3-1-1</a> · 098-941-8200 · <b>週五 9:00–20:00（最後入館 19:30）</b> · 一日通票 750 日圓 · 免費停車 158 台</span><span class="meta">傍晚館外打燈也可拍建築外觀。</span></div></div>
+    <div class="stop"><div class="time">19:30</div><div class="body"><span class="name">車停回飯店</span><span class="meta">白天開走後位子可能被占，滿了就停附近投幣停車場。</span></div></div>
+    <div class="stop"><div class="time">20:00</div><div class="body"><span class="name">YAKINIKU 牛門（沖繩和牛燒肉）<span class="tag t-res">需預約</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=YAKINIKU牛門+那覇市牧志2-5-7" target="_blank" rel="noopener">〒900-0013 那覇市牧志2-5-7 1F</a> · 098-943-5129 · 12:00–23:00 · 全年無休 · 搭計程車或步行約 20 分</span></div></div>
+  </div>
+  <div class="rain">
+    <h3>雨天備案</h3>
+    <p class="small">首里城集中拍收費區室內（奉神門、世誇殿）與首里杜館，<b>石疊道取消</b>（路面濕滑）。瑞泉酒造、しむじょう、suikara 都在室內，照常。港川縮短成 1 小時、只進店家。下午選 A 佐喜眞美術館，博物館提早到 16:00 進場拍久一點。晚上加排第一牧志公設市場（松尾2-10-1，8:00–22:00，2 樓食堂最後點餐約 20:00）。</p>
+  </div>
+</section>
+
+<!-- DAY 4 -->
+<section class="day" id="day4">
+  <div class="dayhead"><span class="d">DAY 4 · 11/7 六</span><h2>南城海景早晨，壺屋散步，傍晚返台</h2></div>
+  <p class="route">久米 → 南城玉城 → 奧武島 → 那霸壺屋・牧志 → 加油 → 還車 → 機場</p>
+  <div class="tl">
+    <div class="stop"><div class="time">7:00</div><div class="body"><span class="name">退房，行李上車</span><span class="meta">飯店停車到 12:00，提早離開不影響。</span></div></div>
+    <div class="stop"><div class="time">8:00</div><div class="body"><span class="name">浜辺の茶屋 <span class="tag t-must">必去</span> <span class="tag t-warn">需申請拍攝</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=浜辺の茶屋+南城市玉城字玉城2-1" target="_blank" rel="noopener">〒901-0604 南城市玉城字玉城2-1</a> · 098-948-2073 · 8:00–18:00 · 不接受預約 · 免費停車約 20 台</span><span class="meta">當天滿潮 5:30、乾潮 11:17，<b>開門就到</b>，10 點後潮水明顯退，「海貼著窗邊」的畫面要趁早。</span></div></div>
+    <div class="stop"><div class="time">9:20</div><div class="body"><span class="name">ガンガラーの谷 導覽 <span class="tag t-res">需預約</span> <span class="tag t-warn">需申請拍攝</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=ガンガラーの谷" target="_blank" rel="noopener">南城市玉城字前川202</a> · 098-948-4192 · 只能跟導覽團入場，約 1 小時 20 分 · 成人 2,500 日圓 · 網路預約到前一天</span></div></div>
+    <div class="stop"><div class="time">11:00</div><div class="body"><span class="name">奥武島 中本鮮魚てんぷら店</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=中本鮮魚てんぷら店" target="_blank" rel="noopener">〒901-0614 南城市玉城字奥武9</a> · 098-948-3583 · 10:30–18:00 · 週四休 · 停車約 4–8 台</span></div></div>
+    <div class="stop move"><div class="time">11:45</div><div class="body"><span class="name">開回那霸，約 40 分</span></div></div>
+    <div class="stop"><div class="time">12:30</div><div class="body"><span class="name">壺屋やちむん通り 散步 <span class="tag t-must">必去</span></span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=壺屋やちむん通り" target="_blank" rel="noopener">那霸市壺屋1丁目</a> · 單行道、沒有免費停車，停壺屋入口（壺屋1-8-2）附近收費停車場</span>
+      <span class="meta"><b>yacchi&amp;moon</b> 壺屋1-21-9（10:00–19:00）· <b>guma guwa</b> 壺屋1-16-21（10:00–18:00）· <b>UTSUWA チャタロウ</b> 壺屋1-8-12 · <b>Etha</b> 壺屋1-22-38（12:00–18:00）· <b>ブンコノブンコ</b> 壺屋1-6-2（週六 12:00–21:00）· カカズ陶器店 壺屋1-8-13（資料舊，可能已歇業）· nan*ne 壺屋1-22-37（未確認）</span></div></div>
+    <div class="stop"><div class="time">13:30</div><div class="body"><span class="name">第一牧志公設市場 2 樓午餐 ＋ 周邊伴手禮</span><span class="meta"><a href="https://www.google.com/maps/search/?api=1&query=第一牧志公設市場" target="_blank" rel="noopener">〒900-0014 那覇市松尾2-10-1</a> · 098-867-6560 · 1 樓買海鮮、2 樓代煮（另收調理費）</span><span class="meta">步行範圍：<b>花商 ジーマーミ豆腐</b> 松尾2-21-7（9:00–18:00）· <b>RENEMIA</b> 牧志2-7-15（13:00–18:00，週二、三休）· <b>MELLOWHICH 国際通り県庁前店</b> 久茂地3-29-69（10:00–21:00）· <b>山城用品</b> 牧志3-5-11（營業時間說法不一，IG 寫到 14:00）</span></div></div>
+    <div class="stop move"><div class="time">14:30</div><div class="body"><span class="name">加油 → 還車（15:00）→ 接駁到機場</span></div></div>
+    <div class="stop"><div class="time">15:30</div><div class="body"><span class="name">那霸機場 國際線報到 NU0307</span><span class="meta">17:55 起飛。報到後逛機場伴手禮區（企畫書 Day 4 最後一點）。</span></div></div>
+  </div>
+  <div class="rain">
+    <h3>雨天備案</h3>
+    <p class="small">浜辺の茶屋照常（雨天的窗景也好看，但颱風或高潮會臨時休業，當天早上看 IG）。ガンガラーの谷雨天是否出團要電話確認；取消的話改 11:00 開館的南城美術館（知念安座真865，週二休，500 日圓）。下午全在那霸室內：第一牧志公設市場、ブンコノブンコ、RENEMIA、國際通伴手禮。不管晴雨，<b>14:30 一定要離開市區去還車</b>。</p>
+  </div>
+</section>
+
+<!-- 對照表 -->
+<section class="day">
+  <h2>原企畫書點位處理對照</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>原企畫點位</th><th>處理</th><th>原因</th></tr></thead>
+      <tbody>
+        <tr><td>恩納村海景飯店（住宿、夕陽、夜間泳池、晨光早餐）</td><td>取消</td><td>住宿改為名護市區；以ニライビーチ夕陽代替</td></tr>
+        <tr><td>ガジュマルロック</td><td>取消</td><td>最後點餐約 15:00，Day 1 到不了</td></tr>
+        <tr><td>okinawa blue col.／.uki／Hisao Museum</td><td>待確認</td><td>查不到這些名字，請企畫書作者確認</td></tr>
+        <tr><td>NAKIJIN BURGER</td><td>備用</td><td>今帰仁村天底1124-5，11:00–17:00；Day 2 若きしもと食堂排太久可改吃</td></tr>
+        <tr><td>岸本食堂 八重岳店</td><td>備用</td><td>本部町伊野波350-1，無休、停車 25 台；本店臨時休時用</td></tr>
+        <tr><td>Ocean BOO! 那霸</td><td>不排</td><td>與碧〜ao〜 擇一，Day 1 已吃碧；店在久米 2-11-26，就在飯店附近，想加隨時可去</td></tr>
+        <tr><td>TACOSPOON</td><td>備用</td><td>在那霸曙3-20-1（週二休），Day 3 可代替メキシコ</td></tr>
+        <tr><td>旅の終わりの朝ごはん</td><td>備用</td><td>2026/3 搬到牧志2-21-7，8:00–14:00，不定休</td></tr>
+        <tr><td>COFFEE potohoto</td><td>備用</td><td>在榮町市場（安里388-1），週日休，Day 4 時間夠才去</td></tr>
+        <tr><td>Suikara 外的首里周邊、JA ゆんた市場、読谷村立図書館</td><td>雨天備案</td><td>列在 Day 2、Day 3 雨天方案</td></tr>
+        <tr><td>南城美術館</td><td>雨天備案</td><td>11:00 才開，11/6 包場休館</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<p class="foot">營業時間、公休、停車資訊是 2026/11/1 從官網、店家 IG、食べログ等網路資料查到的，標「未確認」或「估計」的請出發前再看一次。車程是估計值，請用 Google 地圖輸入當天時間確認。日出日落依日本國立天文台那霸數值；潮汐依氣象廳「沖繩」測站。</p>
+
+</div>
+
+</body>
+</html>
